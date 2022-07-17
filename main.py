@@ -1,4 +1,6 @@
 from signal import signal, SIGINT
+import random
+
 """
 Singnal and SIGINIT are used to handle CTRL-C and SIGINT, and exit gracefully.
 """
@@ -44,3 +46,16 @@ Enter '\033[1mquit\033[0m' to exit the program
         print("\033[1mPlay the quiz:\033[00m")
         print("\033[1mEnter '\033[0mback\033[1m' to return to the main menu\033[0m")
         read_header, read_rows = external_modules.reading_data_csv("quiz_songs.csv")
+        names = []
+        artists = []
+        for i in range(len(read_rows)):
+            name, artist = read_rows[i].split(",")
+            names.append(name)
+            artists.append(artist)
+        print(names)
+        print(artists)
+        temp = input()
+        while True:
+            random_number = random.randint(0, len(names)-1)
+            print("Artist: " + artists[random_number])
+
