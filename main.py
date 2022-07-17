@@ -43,5 +43,4 @@ Enter '\033[1mquit\033[0m' to exit the program
         print("\033[1\033[92mWelcome to the Music Quiz:\033[00m\033[0m")
         print("\033[1mPlay the quiz:\033[00m")
         print("\033[1mEnter '\033[0mback\033[1m' to return to the main menu\033[0m")
-        
-        while True:
+        read_header, read_rows = external_modules.reading_data_csv("quiz_songs.csv")
