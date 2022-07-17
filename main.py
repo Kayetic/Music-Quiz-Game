@@ -20,7 +20,7 @@ while True:
 Enter '\033[1madd\033[0m' to add custom songs to the quiz
 Enter '\033[1mplay\033[0m' to play the quiz
 Enter '\033[1mquit\033[0m' to exit the program
-""")
+>>> """)
     if choice == "add":
         # Add songs to the quiz
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -36,3 +36,12 @@ Enter '\033[1mquit\033[0m' to exit the program
                 break
             external_modules.writing_data_csv("quiz_songs.csv", [song_name, artist_name], ["song_name", "artist_name"])
             print("\033[1mSong added successfully!\033[00m")
+            print("\033[1mEnter '\033[0mback\033[1m' to return to the main menu\033[0m")
+    elif choice == "play":
+        # Play the quiz
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("\033[1\033[92mWelcome to the Music Quiz:\033[00m\033[0m")
+        print("\033[1mPlay the quiz:\033[00m")
+        print("\033[1mEnter '\033[0mback\033[1m' to return to the main menu\033[0m")
+        
+        while True:
