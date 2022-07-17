@@ -1,7 +1,7 @@
 import csv
 from os.path import exists
 
-def writing_data_csv(filename, data_to_write):
+def writing_data_csv(filename, data_to_write, header):
     """
     Function to write data to csv file
     Parameters: filename (string) - the name of the file to be read
@@ -9,10 +9,10 @@ def writing_data_csv(filename, data_to_write):
     """
     file_exists = exists(filename)
     if file_exists is False:
-        header = ['first_name', 'last_name', 'telephone', 'town']
+        # Create a new file if it doesn't exist
         with open(filename, 'w+', newline="", encoding='utf-8') as writing_file:
             csvwriter1 = csv.writer(writing_file) # 1. create a csvwriter object
-            csvwriter1.writerow(header) # 2. write the header
+            csvwriter1.writerow(header) # 2. write the header, must be an array
             csvwriter1.writerow(data_to_write) # 3. write the rest of the data
             writing_file.close() # 4. close the file
     else:
