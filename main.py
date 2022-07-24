@@ -58,7 +58,7 @@ Enter '\033[1mquit\033[0m' to exit the program
         while True:
             random_number = random.randint(0, len(names)-1)
             print("Artist: " + artists[random_number])
-            print("Song (first letter): ", end=" ")
+            print("Song [first letter(s)]: ", end=" ")
             if " " in names[random_number]:
                 split_song = names[random_number].split(" ")
                 for i in range(len(split_song)):
