@@ -52,8 +52,8 @@ Enter '\033[1mquit\033[0m' to exit the program
             name, artist = read_rows[i].split(",")
             names.append(name)
             artists.append(artist)
-        print(names)
-        print(artists)
+        # print(names)
+        # print(artists)
         temp = input()
         while True:
             random_number = random.randint(0, len(names)-1)

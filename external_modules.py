@@ -1,4 +1,4 @@
-import csv
+import csv, random
 from os.path import exists
 
 def writing_data_csv(filename, data_to_write, header):
@@ -35,3 +35,11 @@ def reading_data_csv(filename):
     for i in range(len(read_rows)):
         read_rows[i] = read_rows[i].strip()
     return read_header, read_rows
+
+def choosing_random_song():
+    """
+    Function to choose a random song from the csv file
+    """
+    read_header, read_rows = reading_data_csv("quiz_songs.csv")
+    random_number = random.randint(0, len(read_rows)-1)
+    return read_rows[random_number]
