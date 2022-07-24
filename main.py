@@ -58,4 +58,18 @@ Enter '\033[1mquit\033[0m' to exit the program
         while True:
             random_number = random.randint(0, len(names)-1)
             print("Artist: " + artists[random_number])
+            print("Song (first letter): ", end=" ")
+            if " " in names[random_number]:
+                split_song = names[random_number].split(" ")
+                for i in range(len(split_song)):
+                    print(split_song[i][:1], end=" ")
+            else:
+                print(names[random_number][:1])
+            guess = input(">>> ")
+            if guess == "back":
+                break
+            if guess == names[random_number]:
+                print("\033[1mCorrect!\033[00m")
+            else:
+                print("\033[1mWrong!\033[00m")
 
