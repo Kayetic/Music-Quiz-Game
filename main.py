@@ -5,7 +5,7 @@ import random
 Singnal and SIGINIT are used to handle CTRL-C and SIGINT, and exit gracefully.
 """
 
-import os, external_modules, pandas
+import os, external_modules
 
 def handler(signal_received, frame):
     # Handling any cleanup here
