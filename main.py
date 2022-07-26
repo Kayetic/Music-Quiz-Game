@@ -54,8 +54,30 @@ Enter '\033[1mquit\033[0m' to exit the program
             artists.append(artist)
         # print(names)
         # print(artists)
-        temp = input()
+        temp = input("Press ENTER to start the quiz\n")
+        # while True:
+        #     correct = False
+        #     random_number = random.randint(0, len(names)-1)
+        #     print("Artist: " + artists[random_number])
+        #     print("Song [first letter(s)]: ", end=" ")
+        #     if " " in names[random_number]:
+        #         split_song = names[random_number].split(" ")
+        #         for i in range(len(split_song)):
+        #             print(split_song[i][:1], end=" ")
+        #     else:
+        #         print(names[random_number][:1])
+        #     guess = input(">>> ")
+        #     if guess == "back":
+        #         break
+        #     if guess == names[random_number]:
+        #         print("\033[1mCorrect!\033[00m")
+        #         correct = True
+        #     else:
+        #         print("\033[1mWrong!\033[00m")
+        points = 0
         while True:
+            # correct = False
+            points_to_add = 0
             random_number = random.randint(0, len(names)-1)
             print("Artist: " + artists[random_number])
             print("Song [first letter(s)]: ", end=" ")
@@ -66,10 +88,18 @@ Enter '\033[1mquit\033[0m' to exit the program
             else:
                 print(names[random_number][:1])
             guess = input(">>> ")
-            if guess == "back":
-                break
             if guess == names[random_number]:
                 print("\033[1mCorrect!\033[00m")
+                # correct = True
+                points += 3
             else:
                 print("\033[1mWrong!\033[00m")
-
+                print("One more chance...")
+                guess = input(">>> ")
+                if guess == names[random_number]:
+                    print("\033[1mCorrect!\033[00m")
+                    # correct = True
+                    points += 1
+                else:
+                    print("No points for you!")
+                    continue
