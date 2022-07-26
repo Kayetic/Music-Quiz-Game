@@ -45,5 +45,4 @@ def choosing_random_song():
     return read_rows[random_number]
 
 def add_user_csv(username, password):
-    writing_data_csv('players.csv', [username, password, 0])
-    
+    writing_data_csv('players.csv', [username, password, 0], ['usernames', 'passwords', 'scores'])

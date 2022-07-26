@@ -22,7 +22,13 @@ Enter '\033[1mlogin\033[0m' to log in as a user
 Enter '\033[1madd\033[0m' to add users
 Enter '\033[1mquit\033[0m' to exit the program
 >>> """)
-    if choice == 'login':
+    if choice == 'add':
+        user_username = input('Enter a username you want to have: ')
+        user_password = input('Enter your password you wish to have: ')
+        external_modules.add_user_csv(user_username, user_password)
+        break
+    else:
+        break
         
 
 
