@@ -12,6 +12,19 @@ def handler(signal_received, frame):
     print('\nCTRL-C or SIGINT detected. Exiting gracefully...')
     exit(0)
 
+### Login menu ###
+while True:
+    signal(SIGINT, handler)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("\033[1\033[92mWelcome to the Music Quiz:\033[00m\033[0m")
+    choice = input("""
+Enter '\033[1mlogin\033[0m' to log in as a user
+Enter '\033[1madd\033[0m' to add users
+Enter '\033[1mquit\033[0m' to exit the program
+>>> """)
+    if choice == 'login':
+        
+
 
 ### Main menu ###
 while True:
@@ -68,7 +81,7 @@ Enter '\033[1mquit\033[0m' to exit the program
             if guess == names[random_number]:
                 print("\033[1mCorrect!\033[00m")
                 points += 3
-            elif guess == "back":
+            elif guess == "finish":
                 break            
             else:
                 print("\033[1mWrong!\033[00m")
@@ -77,10 +90,11 @@ Enter '\033[1mquit\033[0m' to exit the program
                 if guess == names[random_number]:
                     print("\033[1mCorrect!\033[00m")
                     points += 1
-                elif guess == "back":
+                elif guess == "finish":
                     break
                 else:
                     print("No points for you!")
                     continue
         print("\033[1mYou scored " + str(points) + " points!\033[00m")
         temp = input("Press ENTER to return to the main menu\n")
+        # external_modules.writing_data_csv('players.csv', [player, points], ['player', 'points'])
