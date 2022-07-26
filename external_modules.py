@@ -43,3 +43,7 @@ def choosing_random_song():
     read_header, read_rows = reading_data_csv("quiz_songs.csv")
     random_number = random.randint(0, len(read_rows)-1)
     return read_rows[random_number]
+
+def add_user_csv(username, password):
+    writing_data_csv('players.csv', [username, password, 0])
+    
