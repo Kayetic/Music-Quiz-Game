@@ -76,8 +76,6 @@ Enter '\033[1mquit\033[0m' to exit the program
         #         print("\033[1mWrong!\033[00m")
         points = 0
         while True:
-            # correct = False
-            points_to_add = 0
             random_number = random.randint(0, len(names)-1)
             print("Artist: " + artists[random_number])
             print("Song [first letter(s)]: ", end=" ")
@@ -90,16 +88,20 @@ Enter '\033[1mquit\033[0m' to exit the program
             guess = input(">>> ")
             if guess == names[random_number]:
                 print("\033[1mCorrect!\033[00m")
-                # correct = True
                 points += 3
+            elif guess == "back":
+                break            
             else:
                 print("\033[1mWrong!\033[00m")
                 print("One more chance...")
                 guess = input(">>> ")
                 if guess == names[random_number]:
                     print("\033[1mCorrect!\033[00m")
-                    # correct = True
                     points += 1
+                elif guess == "back":
+                    break
                 else:
                     print("No points for you!")
                     continue
+        print("\033[1mYou scored " + str(points) + " points!\033[00m")
+        temp = input("Press ENTER to return to the main menu\n")
