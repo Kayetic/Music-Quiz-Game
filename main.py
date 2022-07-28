@@ -1,5 +1,5 @@
 from signal import signal, SIGINT
-import random
+import random, time
 
 """
 Singnal and SIGINIT are used to handle CTRL-C and SIGINT, and exit gracefully.
@@ -27,10 +27,28 @@ Enter '\033[1mquit\033[0m' to exit the program
         user_password = input('Enter your password you wish to have: ')
         external_modules.add_user_csv(user_username, user_password)
         break
+    elif choice == 'login':
+        read_header, read_rows = external_modules.reading_data_csv('players.csv')
+        usernames = []
+        for i in range(len(read_rows)):
+            split_username = read_rows[i].split(',')
+            # print(split_username)
+            usernames.append(split_username[0])
+        print(usernames)
+        while True:
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(usernames)
+            entered_username = input('Enter a username: ')
+            if entered_username not in usernames:
+                print('Incorrect username')
+                time.sleep(0.4)
+                continue
+            else:
+                break
+        temp = input('\nPress ENTER to continue\n')
+        break
     else:
         break
-        
-
 
 ### Main menu ###
 while True:
