@@ -52,8 +52,8 @@ Enter '\033[1mquit\033[0m' to exit the program
         temp = input('\nPress ENTER to continue\n')
         break
     elif choice == 'exit':
-        
-    
+        print('Exiting...')
+        exit(0)
     else:
         break
 
