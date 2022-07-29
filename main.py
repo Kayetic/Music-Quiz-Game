@@ -12,10 +12,14 @@ def handler(signal_received, frame):
     print('\nCTRL-C or SIGINT detected. Exiting gracefully...')
     exit(0)
 
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 ### Login menu ###
 while True:
     signal(SIGINT, handler)
-    os.system('cls' if os.name == 'nt' else 'clear')
+    # os.system('cls' if os.name == 'nt' else 'clear')
+    clear_console()
     print("\033[1\033[92mWelcome to the Music Quiz:\033[00m\033[0m")
     choice = input("""
 Enter '\033[1mlogin\033[0m' to log in as a user
@@ -28,18 +32,18 @@ Enter '\033[1mquit\033[0m' to exit the program
         external_modules.add_user_csv(user_username, user_password)
         break
     elif choice == 'login':
-        read_header, read_rows = external_modules.reading_data_csv('players.csv')
-        usernames = []
-        for i in range(len(read_rows)):
-            split_username = read_rows[i].split(',')
-            # print(split_username)
-            usernames.append(split_username[0])
-        print(usernames)
+        # read_header, read_rows = external_modules.reading_data_csv('players.csv')
+        # usernames = []
+        # for i in range(len(read_rows)):
+        #     split_username = read_rows[i].split(',')
+        #     # print(split_username)
+        #     usernames.append(split_username[0])
+        # print(usernames)
         while True:
-            os.system('cls' if os.name == 'nt' else 'clear')
-            print(usernames)
+            # os.system('cls' if os.name == 'nt' else 'clear')
+            clear_console()
             entered_username = input('Enter a username: ')
-            if entered_username not in usernames:
+            if external_modules.check_username('players.csv', entered_username) is False:
                 print('Incorrect username')
                 time.sleep(0.4)
                 continue
@@ -47,6 +51,9 @@ Enter '\033[1mquit\033[0m' to exit the program
                 break
         temp = input('\nPress ENTER to continue\n')
         break
+    elif choice == 'exit':
+        
+    
     else:
         break
 
@@ -60,7 +67,9 @@ Enter '\033[1madd\033[0m' to add custom songs to the quiz
 Enter '\033[1mplay\033[0m' to play the quiz
 Enter '\033[1mquit\033[0m' to exit the program
 >>> """)
-    if choice == "add":
+    if choice == 'quit':
+        os._exit
+    elif choice == "add":
         # Add songs to the quiz
         os.system('cls' if os.name == 'nt' else 'clear')
         print("\033[1\033[92mWelcome to the Music Quiz:\033[00m\033[0m")
