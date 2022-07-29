@@ -46,3 +46,25 @@ def choosing_random_song():
 
 def add_user_csv(username, password):
     writing_data_csv('players.csv', [username, password, 0], ['usernames', 'passwords', 'scores'])
+
+def check_username(filename, username_to_check):
+    read_header, read_rows = reading_data_csv(filename)
+    usernames = []
+    for i in range(len(read_rows)):
+        split_username = read_rows[i].split(',')
+        usernames.append(split_username[0])
+    if username_to_check in usernames:
+        return True
+    else:
+        return False
+
+def check_password(filename, password_to_check):
+    read_header, read_rows = reading_data_csv(filename)
+    passwords = []
+    for i in range(len(read_rows)):
+        split_username = read_rows[i].split(',')
+        passwords.append(split_username[1])
+    if password_to_check in passwords:
+        return True
+    else:
+        return False
