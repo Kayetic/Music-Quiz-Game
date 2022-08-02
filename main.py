@@ -18,7 +18,6 @@ def clear_console():
 ### Login menu ###
 while True:
     signal(SIGINT, handler)
-    # os.system('cls' if os.name == 'nt' else 'clear')
     clear_console()
     print("\033[1\033[92mWelcome to the Music Quiz:\033[00m\033[0m")
     choice = input("""
@@ -32,13 +31,6 @@ Enter '\033[1mquit\033[0m' to exit the program
         external_modules.add_user_csv(user_username, user_password)
         break
     elif choice == 'login':
-        # read_header, read_rows = external_modules.reading_data_csv('players.csv')
-        # usernames = []
-        # for i in range(len(read_rows)):
-        #     split_username = read_rows[i].split(',')
-        #     # print(split_username)
-        #     usernames.append(split_username[0])
-        # print(usernames)
         while True:
             clear_console()
             entered_username = input('Enter a username: ')
@@ -49,7 +41,7 @@ Enter '\033[1mquit\033[0m' to exit the program
                     row_to_check = row
                 else:
                     continue
-            entered_password = input(f'Enter a the password for {entered_username}: ')
+            entered_password = input(f'Enter the password for {entered_username}: ')
             if entered_password in read_rows[row_to_check]:
                 print('Logged in succesfully')
                 time.sleep(0.5)
@@ -58,13 +50,6 @@ Enter '\033[1mquit\033[0m' to exit the program
                 print('Incorrect details')
                 time.sleep(0.5)
                 continue
-            # if external_modules.check_username('players.csv', entered_username) is False:
-            #     print('Incorrect username')
-            #     time.sleep(0.4)
-            #     continue
-            # else:
-            #     break
-
 
         temp = input('\nPress ENTER to continue\n')
         break
