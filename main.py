@@ -103,17 +103,6 @@ Enter '\033[1mquit\033[0m' to exit the program
         track_names = [x["track"]["name"] for x in sp.playlist_tracks(playlist_URI)["items"]]
         track_artists = [x["track"]["artists"][0]["name"] for x in sp.playlist_tracks(playlist_URI)["items"]]
         print("\033[1mSpotify playlist loaded successfully!\033[00m")
-        print("Track names:")
-        print(track_names)
-        print()
-        print("Track artists:")
-        print(track_artists)
-        temp = input('\nPress ENTER to continue\n')
-        # random_track, random_artist, random_number = external_modules.choosing_random_song_spotify(track_names, track_artists)
-        # print(random_track)
-        # print(random_artist)
-        # print()
-        temp = input('\nPress ENTER to continue\n')
         temp = input("Press ENTER to start the quiz\n")
         points = 0
         while True:
@@ -126,12 +115,12 @@ Enter '\033[1mquit\033[0m' to exit the program
                     print(split_song[i][:1], end=" ")
             else:
                 print(track_names[random_number][:1])
-            guess = input(">>> ")
+            guess = input("\n>>> ")
             if guess == track_names[random_number]:
                 print("\033[1mCorrect!\033[00m")
                 points += 3
             elif guess == "finish":
-                break            
+                break
             else:
                 print("\033[1mWrong!\033[00m")
                 print("One more chance...")
