@@ -16,6 +16,11 @@ def handler(signal_received, frame):
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+
+#Authentication - without user
+client_credentials_manager = SpotifyClientCredentials(client_id="09a9a488dfb046b28e4329f6500b8dba", client_secret="658b67ed18e24d98afe3db7162de0235")
+sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
+
 ### Login menu ###
 while True:
     signal(SIGINT, handler)
@@ -90,7 +95,10 @@ Enter '\033[1mquit\033[0m' to exit the program
             print("\033[1mSong added successfully!\033[00m")
             print("\033[1mEnter '\033[0mback\033[1m' to return to the main menu\033[0m")
     elif choice == "spotify":
-        url = "https://open.spotify.com/playlist/4OIVU71yO7SzyGrh0ils2i?si=06ca21db2ef54760"
+        playlist_link = "https://open.spotify.com/playlist/4OIVU71yO7SzyGrh0ils2i?si=06ca21db2ef54760"
+        playlist_URI = playlist_link.split("/")[-1].split("?")[0]
+        track_uris = [x["track"]["uri"] for x in sp.playlist_tracks(playlist_URI)["items"]]
+        sp.playlist_tracks(playlist_URI)["items"]]
 
     elif choice == "play":
         # Play the quiz
