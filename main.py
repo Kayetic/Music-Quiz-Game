@@ -1,5 +1,6 @@
 from signal import signal, SIGINT
-import random, time, pandas, csv
+from spotipy.oauth2 import SpotifyClientCredentials
+import random, time, pandas, csv, spotipy
 
 """
 Singnal and SIGINIT are used to handle CTRL-C and SIGINT, and exit gracefully.
@@ -66,7 +67,8 @@ while True:
     print("\033[1\033[92mWelcome to the Music Quiz:\033[00m\033[0m")
     choice = input("""
 Enter '\033[1madd\033[0m' to add custom songs to the quiz
-Enter '\033[1mplay\033[0m' to play the quiz
+Enter '\033[1mplay\033[0m' to play the quiz (with own songs)
+Enter '\033[1mspotify\033[0m' to play the quiz (with spotify songs)
 Enter '\033[1mquit\033[0m' to exit the program
 >>> """)
     if choice == 'quit':
@@ -87,6 +89,9 @@ Enter '\033[1mquit\033[0m' to exit the program
             external_modules.writing_data_csv("quiz_songs.csv", [song_name, artist_name], ["song_name", "artist_name"])
             print("\033[1mSong added successfully!\033[00m")
             print("\033[1mEnter '\033[0mback\033[1m' to return to the main menu\033[0m")
+    elif choice == "spotify":
+        url = "https://open.spotify.com/playlist/4OIVU71yO7SzyGrh0ils2i?si=06ca21db2ef54760"
+
     elif choice == "play":
         # Play the quiz
         os.system('cls' if os.name == 'nt' else 'clear')
