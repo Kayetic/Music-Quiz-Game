@@ -109,6 +109,43 @@ Enter '\033[1mquit\033[0m' to exit the program
         print("Track artists:")
         print(track_artists)
         temp = input('\nPress ENTER to continue\n')
+        # random_track, random_artist, random_number = external_modules.choosing_random_song_spotify(track_names, track_artists)
+        # print(random_track)
+        # print(random_artist)
+        # print()
+        temp = input('\nPress ENTER to continue\n')
+        temp = input("Press ENTER to start the quiz\n")
+        points = 0
+        while True:
+            random_track, random_artist, random_number = external_modules.choosing_random_song_spotify(track_names, track_artists)
+            print("Artist: " + random_artist)
+            print("Song [first letter(s)]: ", end=" ")
+            if " " in track_names[random_number]:
+                split_song = track_names[random_number].split(" ")
+                for i in range(len(split_song)):
+                    print(split_song[i][:1], end=" ")
+            else:
+                print(track_names[random_number][:1])
+            guess = input(">>> ")
+            if guess == track_names[random_number]:
+                print("\033[1mCorrect!\033[00m")
+                points += 3
+            elif guess == "finish":
+                break            
+            else:
+                print("\033[1mWrong!\033[00m")
+                print("One more chance...")
+                guess = input(">>> ")
+                if guess == track_names[random_number]:
+                    print("\033[1mCorrect!\033[00m")
+                    points += 1
+                elif guess == "finish":
+                    break
+                else:
+                    print("No points for you!")
+                    continue
+        print("\033[1mYou scored " + str(points) + " points!\033[00m")
+        temp = input("Press ENTER to return to the main menu\n")
 
     elif choice == "play":
         # Play the quiz
