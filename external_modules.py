@@ -68,3 +68,10 @@ def check_password(filename, password_to_check):
         return True
     else:
         return False
+
+def choosing_random_song_spotify(track_names, track_artists):
+    """
+    Function to choose a random song from the spotify playlist
+    """
+    random_number = random.randint(0, len(track_names)-1)
+    return track_names[random_number], track_artists[random_number], random_number
