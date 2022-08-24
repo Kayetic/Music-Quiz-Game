@@ -95,10 +95,20 @@ Enter '\033[1mquit\033[0m' to exit the program
             print("\033[1mSong added successfully!\033[00m")
             print("\033[1mEnter '\033[0mback\033[1m' to return to the main menu\033[0m")
     elif choice == "spotify":
+        print("Please wait a moment...")
         playlist_link = "https://open.spotify.com/playlist/4OIVU71yO7SzyGrh0ils2i?si=06ca21db2ef54760"
         playlist_URI = playlist_link.split("/")[-1].split("?")[0]
         track_uris = [x["track"]["uri"] for x in sp.playlist_tracks(playlist_URI)["items"]]
-        sp.playlist_tracks(playlist_URI)["items"]]
+        sp.playlist_tracks(playlist_URI)["items"]
+        track_names = [x["track"]["name"] for x in sp.playlist_tracks(playlist_URI)["items"]]
+        track_artists = [x["track"]["artists"][0]["name"] for x in sp.playlist_tracks(playlist_URI)["items"]]
+        print("\033[1mSpotify playlist loaded successfully!\033[00m")
+        print("Track names:")
+        print(track_names)
+        print()
+        print("Track artists:")
+        print(track_artists)
+        temp = input('\nPress ENTER to continue\n')
 
     elif choice == "play":
         # Play the quiz
