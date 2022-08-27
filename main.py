@@ -1,4 +1,5 @@
 from signal import signal, SIGINT
+from config_secrets import *
 from spotipy.oauth2 import SpotifyClientCredentials
 import random, time, pandas, csv, spotipy
 
@@ -18,7 +19,7 @@ def clear_console():
 
 
 #Authentication - without user
-client_credentials_manager = SpotifyClientCredentials(client_id="09a9a488dfb046b28e4329f6500b8dba", client_secret="658b67ed18e24d98afe3db7162de0235")
+client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
 
 ### Login menu ###
@@ -77,7 +78,7 @@ Enter '\033[1mspotify\033[0m' to play the quiz (with spotify songs)
 Enter '\033[1mquit\033[0m' to exit the program
 >>> """)
     if choice == 'quit':
-        os._exit
+        os._exit(0)
     elif choice == "add":
         # Add songs to the quiz
         os.system('cls' if os.name == 'nt' else 'clear')
